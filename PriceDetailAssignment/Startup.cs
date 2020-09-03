@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PriceDetailAssignment.Models.Repo;
+using PriceDetailAssignment.Models.Services;
 
 namespace PriceDetailAssignment
 {
@@ -25,6 +27,10 @@ namespace PriceDetailAssignment
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Inpendency of Injections
+            services.AddScoped<IProductRepo, ProductRepo>();
+            services.AddScoped<IProductService, ProductService>();
+
             services.AddControllers();
         }
 

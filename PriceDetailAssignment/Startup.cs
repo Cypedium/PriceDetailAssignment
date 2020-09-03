@@ -34,6 +34,8 @@ namespace PriceDetailAssignment
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             
+            services.AddControllers();
+            
             // Inpendency of Injections
             services.AddScoped<IProductRepo, ProductRepo>();
             services.AddScoped<IProductService, ProductService>();

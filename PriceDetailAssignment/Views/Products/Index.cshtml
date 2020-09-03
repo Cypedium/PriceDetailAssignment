@@ -1,0 +1,40 @@
+﻿@model List<Product> 
+@{ 
+    ViewData["Title"] = "Index";
+}
+<h1>Index</h1>
+
+<br />
+
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>PriceValuedId</th>
+            <th>Created</th>
+            <th>Modified</th>
+            <th>CatalogEntryCode</th>
+            <th>MarketId</th>
+            <th>CurrencyCode</th>
+            <th>ValidFrom</th>
+            <th>ValidUntil</th>
+            <th>UnitPrice</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {           
+            <tr id="1">
+                <td>@item.PriceValuedId</td>
+                <td>@item.Created</td>
+                <td>@item.Modified</td>
+                <td>@item.CatalogEntryCode</td>
+                <td>@item.MarketId</td>
+                <td>@item.CurrencyCode</td>
+                <td>@item.ValidFrom</td>
+                <td>@item.ValidUntil</td>
+                <td>@item.UnitPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>

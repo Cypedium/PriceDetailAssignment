@@ -7,25 +7,27 @@ namespace PriceDetailAssignment.Models.Repo
 {
     public class ProductRepo : IProductRepo
     {
-        readonly HandlePriceDetailDbContext _handlePriceDetailDbContext;
+        readonly HandlePriceDetailsDbContext _handlePriceDetailsDbContext;
 
-        public ProductRepo(HandlePriceDetailDbContext handlePriceDetailDbContext)
+        public ProductRepo(HandlePriceDetailsDbContext handlePriceDetailsDbContext)
         {
-            _handlePriceDetailDbContext = handlePriceDetailDbContext;
+            _handlePriceDetailsDbContext = handlePriceDetailsDbContext;
         }
         public List<Product> All_Raw_Data()
         {
-            throw new NotImplementedException();
+            return _handlePriceDetailsDbContext.Products.ToList();
         }
-
-        public Product Modified(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Product> Modified_Data()
         {
-            throw new NotImplementedException();
+            return _handlePriceDetailsDbContext.Products.ToList();
         }
+
+        public Product Create(Product product)
+        {
+            _handlePriceDetailsDbContext.Products.Add(product);
+            _handlePriceDetailsDbContext.SaveChanges();
+            return product;
+        }
+
     }
 }

@@ -7,7 +7,7 @@ namespace PriceDetailAssignment.Models.Services
 {
     public interface IProductService
     {
-        Product Modified(Product product);
+        Product Create(Product product);
         List<Product> All_Raw_Data();
         List<Product> Modified_Data();
     }

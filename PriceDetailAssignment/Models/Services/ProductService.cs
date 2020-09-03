@@ -9,7 +9,7 @@ namespace PriceDetailAssignment.Models.Services
     public class ProductService : IProductService
     {
         readonly IProductRepo _productRepo;
-        ProductService(IProductRepo productRepo)
+        public ProductService(IProductRepo productRepo)
         {
             _productRepo = productRepo;
         }
@@ -22,9 +22,21 @@ namespace PriceDetailAssignment.Models.Services
             return _productRepo.Modified_Data();
         }
 
-        public Product Modified(Product product)
+        public Product Create(Product product)
         {
-            return _productRepo.Modified(product);
+            Product newProduct = new Product()
+            {
+                PriceValuedId       = product.PriceValuedId,
+                Created             = product.Created,
+                Modified            = product.Modified,
+                CatalogEntryCode    = product.CatalogEntryCode,
+                MarketId            = product.MarketId,
+                CurrencyCode        = product.CurrencyCode,
+                ValidFrom           = product.ValidFrom,
+                ValidUntil          = product.ValidUntil,
+                UnitPrice           = product.UnitPrice
+            };
+            return _productRepo.Create(newProduct);
         }
 
     }

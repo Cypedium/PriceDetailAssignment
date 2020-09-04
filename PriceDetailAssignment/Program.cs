@@ -26,6 +26,8 @@ namespace PriceDetailAssignment
                 try
                 {
                     var context = services.GetRequiredService<HandlePriceDetailsDbContext>();
+
+                    DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

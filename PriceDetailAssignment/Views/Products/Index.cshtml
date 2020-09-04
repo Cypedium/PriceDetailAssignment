@@ -1,40 +1,54 @@
-﻿@model List<Product> 
-@{ 
+﻿@model List<Product>
+@{
     ViewData["Title"] = "Index";
 }
-<h1>Index</h1>
 
+<h1>SKU Raw List</h1>
+<p>For CatalogEntryCode = "27773-02"</p>
 <br />
 
-<table class="table table-striped">
+<table class="table table-striped align-left">
     <thead class="thead-light">
-        <tr>
-            <th>PriceValuedId</th>
-            <th>Created</th>
-            <th>Modified</th>
-            <th>CatalogEntryCode</th>
+        <tr m-10>
             <th>MarketId</th>
-            <th>CurrencyCode</th>
-            <th>ValidFrom</th>
-            <th>ValidUntil</th>
+            <th></th>
             <th>UnitPrice</th>
+            <th></th>
+            <th>CurrencyCode</th>
+            <th></th>
+            <th>ValidFrom</th>
+            <th></th>
+            <th>ValidUntil</th>
+            <th></th>
+            @*<th>Created</th>
+        <th>Modified</th>
+        <th>CatalogEntryCode</th>
+            <th>PriceValuedId</th>*@
         </tr>
     </thead>
 
     <tbody>
         @foreach (var item in Model)
-        {           
-            <tr id="1">
-                <td>@item.PriceValuedId</td>
-                <td>@item.Created</td>
-                <td>@item.Modified</td>
-                <td>@item.CatalogEntryCode</td>
-                <td>@item.MarketId</td>
-                <td>@item.CurrencyCode</td>
-                <td>@item.ValidFrom</td>
-                <td>@item.ValidUntil</td>
-                <td>@item.UnitPrice</td>
-            </tr>
+        {
+        <tr m-10 id="TableRow for:@item.CatalogEntryCode.">
+
+            <td>@item.MarketId</td>
+            <td></td>
+            <td>@item.UnitPrice</td>
+            <td></td>
+            <td>@item.CurrencyCode</td>
+            <td></td>
+            <td>@item.ValidFrom</td>
+            <td></td>
+            <td>@item.ValidUntil</td>
+            <td></td>
+            @*<td>@item.Created</td>
+        <td>@item.Modified</td>
+        <td>@item.CatalogEntryCode</td>
+            <td>PriceValuedId</td>*@
+        </tr>
         }
     </tbody>
 </table>
+                
+       

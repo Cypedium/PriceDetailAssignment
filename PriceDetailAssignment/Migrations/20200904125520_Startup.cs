@@ -15,9 +15,9 @@ namespace PriceDetailAssignment.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Created = table.Column<DateTime>(nullable: false),
                     Modified = table.Column<DateTime>(nullable: false),
-                    CatalogEntryCode = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    MarketId = table.Column<string>(type: "nvarchar(5)", nullable: false),
-                    CurrencyCode = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    CatalogEntryCode = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    MarketId = table.Column<string>(type: "nvarchar(5)", nullable: true),
+                    CurrencyCode = table.Column<string>(type: "nvarchar(5)", nullable: true),
                     ValidFrom = table.Column<DateTime>(nullable: false),
                     ValidUntil = table.Column<DateTime>(nullable: false),
                     UnitPrice = table.Column<decimal>(nullable: false)

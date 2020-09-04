@@ -5,12 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\ViewModels\" />
-    <Folder Include="User\" />
+    <Compile Remove="Models\ViewModels\**" />
+    <Compile Remove="User\**" />
+    <Content Remove="Models\ViewModels\**" />
+    <Content Remove="User\**" />
+    <EmbeddedResource Remove="Models\ViewModels\**" />
+    <EmbeddedResource Remove="User\**" />
+    <None Remove="Models\ViewModels\**" />
+    <None Remove="User\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Castle.Windsor" Version="5.0.1" />
+    <PackageReference Include="CsvHelper" Version="15.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">

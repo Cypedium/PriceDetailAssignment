@@ -10,7 +10,7 @@ using PriceDetailAssignment.Models;
 namespace PriceDetailAssignment.Migrations
 {
     [DbContext(typeof(HandlePriceDetailsDbContext))]
-    [Migration("20200903124925_Startup")]
+    [Migration("20200904125520_Startup")]
     partial class Startup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,18 +29,15 @@ namespace PriceDetailAssignment.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CatalogEntryCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CurrencyCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("MarketId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(5)");
 
                     b.Property<DateTime>("Modified")

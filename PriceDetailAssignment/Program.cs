@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PriceDetailAssignment.Models;
+using TinyCsvParser;
+using TinyCsvParser.Mapping;
 
 namespace PriceDetailAssignment
 {
@@ -17,6 +20,13 @@ namespace PriceDetailAssignment
         {
             //New change to run seed correct
             //CreateHostBuilder(args).Build().Run();
+
+            
+
+
+
+            
+
 
             var host = CreateHostBuilder(args).Build();
 

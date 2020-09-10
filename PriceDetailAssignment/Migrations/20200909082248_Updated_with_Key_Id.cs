@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PriceDetailAssignment.Migrations
 {
-    public partial class Startup : Migration
+    public partial class Updated_with_Key_Id : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,8 +11,9 @@ namespace PriceDetailAssignment.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    PriceValuedId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    PriceValuedId = table.Column<int>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
                     Modified = table.Column<DateTime>(nullable: false),
                     CatalogEntryCode = table.Column<string>(type: "nvarchar(20)", nullable: true),
@@ -24,7 +25,7 @@ namespace PriceDetailAssignment.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.PriceValuedId);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
         }
 

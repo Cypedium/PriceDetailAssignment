@@ -21,32 +21,34 @@
             <th>ValidUntil</th>
             <th></th>
             @*<th>Created</th>
-        <th>Modified</th>
-        <th>CatalogEntryCode</th>
-            <th>PriceValuedId</th>*@
+                <th>Modified</th>
+                <th>CatalogEntryCode</th>
+                    <th>PriceValuedId</th>*@
         </tr>
     </thead>
 
     <tbody>
         @foreach (var item in Model)
         {
-        <tr m-10 id="@item.PriceValuedId">
-
-            <td>@item.MarketId</td>
-            <td></td>
-            <td>@item.UnitPrice</td>
-            <td></td>
-            <td>@item.CurrencyCode</td>
-            <td></td>
-            <td>@item.ValidFrom</td>
-            <td></td>
-            <td>@item.ValidUntil</td>
-            <td></td>
-            @*<td>@item.Created</td>
-        <td>@item.Modified</td>
-        <td>@item.CatalogEntryCode</td>
-            <td>PriceValuedId</td>*@
-        </tr>
+            <tr m-10 id="TableRow @item.Id:">
+                <td>@item.MarketId</td>
+                <td></td>
+                <td>@item.UnitPrice</td>
+                <td></td>
+                <td>@item.CurrencyCode</td>
+                <td></td>
+                <td>@item.ValidFrom</td>
+                <td></td>
+                <td>@item.ValidUntil</td>
+                <td></td>
+                @*<td>@item.PriceValuedId</td>
+                <td></td>
+                <td>@item.Created</td>
+                <td></td>
+                <td>@item.Modified</td>
+                <td></td>
+                <td>@item.CatalogEntryCode</td>*@
+            </tr>
         }
     </tbody>
 </table>

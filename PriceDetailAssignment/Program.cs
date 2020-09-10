@@ -21,13 +21,6 @@ namespace PriceDetailAssignment
             //New change to run seed correct
             //CreateHostBuilder(args).Build().Run();
 
-            
-
-
-
-            
-
-
             var host = CreateHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())

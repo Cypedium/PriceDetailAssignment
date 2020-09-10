@@ -20,12 +20,16 @@ namespace PriceDetailAssignment.Controllers
         }
         public IActionResult Index()
         {
-            CsvParserOptions csvParserOptions = new CsvParserOptions(true, ',');
-            var csvParser = new CsvParser<Product>(csvParserOptions, new CsvProductMapping());
-            var records = csvParser.ReadFromFile("price_detail.csv", Encoding.UTF8);
-
-            return View(records.Where(x => x.IsValid).Select(x => x.Result).ToList());
-            //return View(_productService.All_Raw_Data());
+            return View(_productService.All_Raw_Data());
         }
     }
 }
+
+
+
+
+            //CsvParserOptions csvParserOptions = new CsvParserOptions(true, ',');
+            //var csvParser = new CsvParser<Product>(csvParserOptions, new CsvProductMapping());
+            //var records = csvParser.ReadFromFile("price_detail.csv", Encoding.UTF8);
+
+            //return View((records.Where(x => x.IsValid).Select(x => x.Result)).ToList());

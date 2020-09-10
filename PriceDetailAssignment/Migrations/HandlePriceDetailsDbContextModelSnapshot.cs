@@ -21,7 +21,7 @@ namespace PriceDetailAssignment.Migrations
 
             modelBuilder.Entity("PriceDetailAssignment.Models.Product", b =>
                 {
-                    b.Property<int>("PriceValuedId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -41,6 +41,9 @@ namespace PriceDetailAssignment.Migrations
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("PriceValuedId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("UnitPrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -50,7 +53,7 @@ namespace PriceDetailAssignment.Migrations
                     b.Property<DateTime>("ValidUntil")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("PriceValuedId");
+                    b.HasKey("Id");
 
                     b.ToTable("Products");
                 });

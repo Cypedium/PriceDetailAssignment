@@ -11,6 +11,7 @@ namespace PriceDetailAssignment.Models
     public class Product
     {
         [Key]
+        public int Id { get; set; }
         public int PriceValuedId { get; set; }
        
         public DateTime Created { get; set; }

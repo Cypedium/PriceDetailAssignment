@@ -3,54 +3,56 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>SKU Raw List</h1>
-<p>For CatalogEntryCode = "27773-02"</p>
-<br />
+<h1>SKU Full Raw List</h1>
 
-<table class="table table-striped align-left">
-    <thead class="thead-light">
-        <tr m-10>
-            <th>MarketId</th>
-            <th></th>
-            <th>UnitPrice</th>
-            <th></th>
-            <th>CurrencyCode</th>
-            <th></th>
-            <th>ValidFrom</th>
-            <th></th>
-            <th>ValidUntil</th>
-            <th></th>
-            @*<th>Created</th>
-                <th>Modified</th>
-                <th>CatalogEntryCode</th>
-                    <th>PriceValuedId</th>*@
-        </tr>
-    </thead>
+    <p>Sorting of CatalogEntryCode</p>
+    <br />
 
-    <tbody>
-        @foreach (var item in Model)
-        { 
-            <tr m-10 id="TableRow @item.Id:">
-                <td>@item.MarketId</td>
-                <td></td>
-                <td>@item.UnitPrice</td>
-                <td></td>
-                <td>@item.CurrencyCode</td>
-                <td></td>
-                <td>@item.ValidFrom</td>
-                <td></td>
-                <td>@item.ValidUntil</td>
-                <td></td>
-                @*<td>@item.PriceValuedId</td>
-                <td></td>
-                <td>@item.Created</td>
-                <td></td>
-                <td>@item.Modified</td>
-                <td></td>
-                <td>@item.CatalogEntryCode</td>*@
+    <table class="table table-striped align-left">
+        <thead class="thead-light">
+            <tr m-10>
+                <th>MarketId</th>
+                <th></th>
+                <th>UnitPrice</th>
+                <th></th>
+                <th>CurrencyCode</th>
+                <th></th>
+                <th>ValidFrom</th>
+                <th></th>
+                <th>ValidUntil</th>
+                <th></th>
+                @*<th>Created</th>
+                    <th>Modified</th>
+                    <th>CatalogEntryCode</th>
+                        <th>PriceValuedId</th>*@
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+
+        <tbody>                       
+                @foreach (var item in Model)
+                { 
+                    <tr m-10 id="TableRow @item.Id:">
+                        <td>@item.MarketId</td>
+                        <td></td>
+                        <td>@item.UnitPrice</td>
+                        <td></td>
+                        <td>@item.CurrencyCode</td>
+                        <td></td>
+                        <td>@item.ValidFrom</td>
+                        <td></td>
+                        <td>@item.ValidUntil</td>
+                        <td></td>
+                        @*<td>@item.PriceValuedId</td>
+                        <td></td>
+                        <td>@item.Created</td>
+                        <td></td>
+                        <td>@item.Modified</td>
+                        <td></td>
+                        <td>@item.CatalogEntryCode</td>*@
+                    </tr>
+                }        
+        </tbody>
+    </table>
+
                 
        

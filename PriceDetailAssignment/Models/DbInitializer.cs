@@ -22,9 +22,10 @@ namespace PriceDetailAssignment.Models
             var records = csvParser.ReadFromFile("price_detail.csv", Encoding.UTF8)
                 .Where(x => x.IsValid)
                 .ToList();
-            
+
 
             //Change type, convert Raw data and save to Database-------------------------------------------------
+            List<Product> products = new List<Product>();
 
             if (!context.Products.Any())
             {
@@ -42,10 +43,22 @@ namespace PriceDetailAssignment.Models
                         ValidUntil = Convert.ToDateTime(row.Result.ValidUntil),
                         UnitPrice = Convert.ToDecimal(row.Result.UnitPrice)
                     };
-                    context.Products.Add(product);
-                    context.Products.;
-                    context.SaveChanges();
+                    products.Add(product);
                 }
+
+                //List<Product> products_sortingByCatalogEntryCode = new List<Product>();
+                //products_sortingByCatalogEntryCode = products;
+                //products_sortingByCatalogEntryCode.Sort(delegate (Product x, Product y)
+                products.Sort(delegate (Product x, Product y)
+                {
+                    if (x.CatalogEntryCode == null && y.CatalogEntryCode == null) return 0;
+                    else if (x.CatalogEntryCode == null) return -1;
+                    else if (y.CatalogEntryCode == null) return 1;
+                    else return x.CatalogEntryCode.CompareTo(y.CatalogEntryCode);
+                });
+
+                context.Products.AddRange(products);
+                context.SaveChanges();
             }    
         }
     }

@@ -24,19 +24,6 @@ namespace PriceDetailAssignment.Models.Services
             return _productRepo.Modified_Data();
         }
 
-        //CsvParserOptions csvParserOptions = new CsvParserOptions(true, ',');
-        //var csvParser = new CsvParser<Product>(csvParserOptions, new CsvProductMapping());
-        //var records = csvParser.ReadFromFile("price_detail.csv", Encoding.UTF8);
-        //records.Where(x => x.IsValid)
-        //// This get the populated Entities:
-        //.Select(x => x.Result)
-        //// This turn it into a List:
-        //.ToList();
-
-
-
-        //records.ElementAt(1);
-
         public Product Create(Product product)
         {
             Product newProduct = new Product()

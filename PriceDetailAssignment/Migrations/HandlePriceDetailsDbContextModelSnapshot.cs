@@ -29,7 +29,7 @@ namespace PriceDetailAssignment.Migrations
                     b.Property<string>("CatalogEntryCode")
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<DateTime>("Created")
+                    b.Property<DateTime?>("Created")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CurrencyCode")
@@ -38,7 +38,7 @@ namespace PriceDetailAssignment.Migrations
                     b.Property<string>("MarketId")
                         .HasColumnType("nvarchar(5)");
 
-                    b.Property<DateTime>("Modified")
+                    b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PriceValuedId")
@@ -47,10 +47,10 @@ namespace PriceDetailAssignment.Migrations
                     b.Property<decimal>("UnitPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime>("ValidFrom")
+                    b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ValidUntil")
+                    b.Property<DateTime?>("ValidUntil")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

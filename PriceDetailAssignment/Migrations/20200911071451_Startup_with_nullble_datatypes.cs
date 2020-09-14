@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PriceDetailAssignment.Migrations
 {
-    public partial class Updated_with_Key_Id : Migration
+    public partial class Startup_with_nullble_datatypes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,13 +14,13 @@ namespace PriceDetailAssignment.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PriceValuedId = table.Column<int>(nullable: false),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: false),
+                    Created = table.Column<DateTime>(nullable: true),
+                    Modified = table.Column<DateTime>(nullable: true),
                     CatalogEntryCode = table.Column<string>(type: "nvarchar(20)", nullable: true),
                     MarketId = table.Column<string>(type: "nvarchar(5)", nullable: true),
                     CurrencyCode = table.Column<string>(type: "nvarchar(5)", nullable: true),
-                    ValidFrom = table.Column<DateTime>(nullable: false),
-                    ValidUntil = table.Column<DateTime>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: true),
+                    ValidUntil = table.Column<DateTime>(nullable: true),
                     UnitPrice = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>

@@ -14,22 +14,23 @@ namespace PriceDetailAssignment.Models
         public int Id { get; set; }
         public int PriceValuedId { get; set; }
        
-        public DateTime Created { get; set; }
+        public DateTime? Created { get; set; }
         
-        public DateTime Modified { get; set; }
+        public DateTime? Modified { get; set; }
         
         [Column(TypeName = "nvarchar(20)")]
         public string CatalogEntryCode {get; set;}
         
         [Column(TypeName = "nvarchar(5)")]
         public string MarketId { get; set; }
+
         
         [Column(TypeName = "nvarchar(5)")]
         public string CurrencyCode { get; set; }
         
-        public DateTime ValidFrom { get; set; }
+        public DateTime? ValidFrom { get; set; } //?=Kan vara null
         
-        public DateTime ValidUntil { get; set; }
+        public DateTime? ValidUntil { get; set; }
 
         //[Column(TypeName = "decimal")]
         public decimal UnitPrice { get; set; }

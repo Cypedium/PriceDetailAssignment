@@ -12,8 +12,6 @@ namespace PriceDetailAssignment.Controllers
 {
     public class ProductsController : Controller
     {
-        
-
         readonly IProductService _productService;
 
         public ProductsController(IProductService productService)

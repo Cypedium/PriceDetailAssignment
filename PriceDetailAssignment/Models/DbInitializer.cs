@@ -22,7 +22,7 @@ namespace PriceDetailAssignment.Models
             CsvParserOptions csvParserOptions = new CsvParserOptions(true, '\t'); //true=skippa headern
             var csvParser = new CsvParser<Product>(csvParserOptions, new CsvProductMapping());
             var records = csvParser.ReadFromFile("price_detail.csv", Encoding.UTF8)
-                .Where(x => x.IsValid)
+                .Where(x => x.IsValid) //Parse Only the valid rows
                 .ToList();
            
                 //Change type, convert Raw data and save to Database-------------------------------------------------
@@ -48,6 +48,8 @@ namespace PriceDetailAssignment.Models
                         products.Add(product);
                     }
 
+                    //ska detta vara med?-----------------------------------------------------------
+
                     //List<Product> products_sortingByCatalogEntryCode = new List<Product>();
                     //products_sortingByCatalogEntryCode = products;
                     //products_sortingByCatalogEntryCode.Sort(delegate (Product x, Product y)
@@ -59,13 +61,16 @@ namespace PriceDetailAssignment.Models
                     //    else return x.CatalogEntryCode.CompareTo(y.CatalogEntryCode);
                     //});
 
-                    var products2 = products;
+                    //-----------------------------------------------------------------------------
 
+                    //Testkod?----------------------------------------------------------------------
+                    var products2 = products;
                     products2.
                     GroupBy(w => w.CatalogEntryCode).
                     Select(g => new { CatalogEntryCode = g.Key, Products2 = g }).
                     OrderBy(o => o.CatalogEntryCode).ToList();
                     //Select(g => new { Length = g.Key, Words = g }).
+                    //--------------------------------------------------------------------------------
 
                     context.Products.AddRange(products);
                     context.SaveChanges();

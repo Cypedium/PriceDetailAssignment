@@ -18,24 +18,28 @@ namespace PriceDetailAssignment.Controllers
         {
             _productService = productService;
         }
-        [HttpGet]
-        public IActionResult Index(string id)
+        
+        [HttpGet()]
+        public IActionResult Index(string market_Id, string currency_Code, string catalogEntryCode)
         {
-            string[] temp_Array = new string[3];
-            temp_Array = id.Split('=', 3);
-
-            string catalogEntryCode = temp_Array[0];
-            string market_Id = temp_Array[1];
-            string currency_Code = temp_Array[2];
-
-            ViewBag.Message_CatalogEntryCode = catalogEntryCode;
-            ViewBag.Message_Market = market_Id;
-            ViewBag.Message_Currency = currency_Code;
-
             List<Product> catalogEntryCodes = new List<Product>();
-            catalogEntryCodes = _productService.All_Raw_Data().Where(x => x.CatalogEntryCode == catalogEntryCode).ToList();
             
-            return View(ModulateService.CatalogEntryCodes(catalogEntryCodes, market_Id, currency_Code));
+            if (ModelState.IsValid)
+            {
+                
+                ViewBag.Message_Market = market_Id;
+                ViewBag.Message_Currency = currency_Code;
+                ViewBag.Message_CatalogEntryCode = catalogEntryCode;
+
+                catalogEntryCodes = _productService.All_Raw_Data().Where(x => x.CatalogEntryCode == catalogEntryCode).ToList();
+
+                return View(ModulateService.CatalogEntryCodes(catalogEntryCodes, market_Id, currency_Code));
+            }
+            else
+            {
+                return View(catalogEntryCodes);
+            }
+            
         }
     }
 }

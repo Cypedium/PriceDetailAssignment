@@ -7,7 +7,7 @@ namespace PriceDetailAssignment.Models.Services
 {
     public class ModulateService
     {
-        public static List<Product> CatalogEntryCodes(List<Product> catalogEntryCodes)
+        public static List<Product> CatalogEntryCodes(List<Product> catalogEntryCodes, string market_Id, string currency_Code)
         {
             if (string.IsNullOrEmpty(catalogEntryCodes.ToString()))
                 {
@@ -23,7 +23,7 @@ namespace PriceDetailAssignment.Models.Services
                     });
 
             List<Product> catalogEntryCodes_Market_sv = new List<Product>();
-            catalogEntryCodes_Market_sv = catalogEntryCodes.Where(x => x.MarketId == "sv").ToList();
+            catalogEntryCodes_Market_sv = catalogEntryCodes.Where(x => x.MarketId == market_Id && x.CurrencyCode == currency_Code).ToList();
 
             int array_Length = catalogEntryCodes_Market_sv.Count();
 

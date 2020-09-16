@@ -61,7 +61,7 @@ namespace PriceDetailAssignment
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id=27773-02}");
+                    pattern: "{controller=Home}/{action=Index}/{id=27773-02=en=SEK}");
             });
         }
     }

@@ -21,12 +21,20 @@ namespace PriceDetailAssignment.Controllers
         [HttpGet]
         public IActionResult Index(string id)
         {
-            string catalogEntryCode = id;
-            ViewBag.Message = catalogEntryCode;
+            string[] temp_Array = new string[3];
+            temp_Array = id.Split('=', 3);
+
+            string catalogEntryCode = temp_Array[0];
+            string market_Id = temp_Array[1];
+            string currency_Code = temp_Array[2];
+
+            ViewBag.Message_CatalogEntryCode = catalogEntryCode;
+            ViewBag.Message_Market = market_Id;
+
             List<Product> catalogEntryCodes = new List<Product>();
             catalogEntryCodes = _productService.All_Raw_Data().Where(x => x.CatalogEntryCode == catalogEntryCode).ToList();
             
-            return View(ModulateService.CatalogEntryCodes(catalogEntryCodes));
+            return View(ModulateService.CatalogEntryCodes(catalogEntryCodes, market_Id, currency_Code));
         }
     }
 }

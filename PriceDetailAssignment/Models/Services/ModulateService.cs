@@ -9,9 +9,11 @@ namespace PriceDetailAssignment.Models.Services
     {
         public static List<Product> CatalogEntryCodes(List<Product> catalogEntryCodes)
         {
-
-            //List<Product> catalogEntryCodes = new List<Product>();
-
+            if (string.IsNullOrEmpty(catalogEntryCodes.ToString()))
+                {
+                    return catalogEntryCodes;
+                }
+            
             catalogEntryCodes.Sort(delegate (Product x, Product y)
                     {
                         if (x.PriceValuedId == 0 && y.PriceValuedId == 0) return 0;
@@ -23,114 +25,122 @@ namespace PriceDetailAssignment.Models.Services
             List<Product> catalogEntryCodes_Market_sv = new List<Product>();
             catalogEntryCodes_Market_sv = catalogEntryCodes.Where(x => x.MarketId == "sv").ToList();
 
-            Product[] array = new Product[6];
+            int array_Length = catalogEntryCodes_Market_sv.Count();
+
+            Product[] array = new Product[array_Length];
             array = catalogEntryCodes_Market_sv.ToArray();
             
-            for (int i = 0; i<array.Length - 1; i++) //shifting values
+            if (array.Length != 1)
             {
-                DateTime dateTime_true = (DateTime)array[0].ValidUntil; //
-                //Product copyOfProduct; 
+                for (int i = 0; i<array.Length - 1; i++) //shifting values
+                {
+                    DateTime dateTime_true = (DateTime)array[0].ValidUntil; 
                 
-                if (array[i].PriceValuedId != 0 || i< 3)
-                {
-                    if (array[i].ValidUntil == null || array[i].ValidUntil == dateTime_true)
+                    if (array[i].PriceValuedId != 0 || i< 3)
                     {
-                        array[i].ValidUntil = array[i + 1].ValidFrom;
-                    }
-                    else if (array[i].ValidUntil > array[i + 1].ValidFrom)
-                    {
-                        array[i].ValidUntil = array[i + 1].ValidFrom;
+                        if (array[i].ValidUntil == null || array[i].ValidUntil == dateTime_true)
+                        {
+                            array[i].ValidUntil = array[i + 1].ValidFrom;
+                        }
+                        else if (array[i].ValidUntil > array[i + 1].ValidFrom)
+                        {
+                            array[i].ValidUntil = array[i + 1].ValidFrom;
+                        }
                     }
                 }
-            }
 
-            //Add new Product row(s) if neccessery-----------------------------------------------------------------
-            for (int x = 0; x<array.Length -1; x++)
-            {
+                //Add new Product row(s) if neccessery-----------------------------------------------------------------
+                for (int x = 0; x<array.Length -1; x++)
+                {
                 
-                if (array[x].ValidUntil != array[x + 1].ValidFrom)
-                {
-                    Product newProduct_Row = new Product()
+                    if (array[x].ValidUntil != array[x + 1].ValidFrom)
                     {
-                        PriceValuedId = 0, //Need to change value to my ghoost
-                        Created = array[x].Created,
-                        Modified = array[x].Modified,
-                        CatalogEntryCode = array[x].CatalogEntryCode,
-                        MarketId = array[x].MarketId,
-                        CurrencyCode = array[x].CurrencyCode,
-                        ValidFrom = array[x].ValidFrom, //Gets the right value from this x product in array
-                        ValidUntil = array[x].ValidUntil,
-                        UnitPrice = array[x].UnitPrice
-                    };
+                        Product newProduct_Row = new Product()
+                        {
+                            PriceValuedId = 0, //Need to change value to my ghoost
+                            Created = array[x].Created,
+                            Modified = array[x].Modified,
+                            CatalogEntryCode = array[x].CatalogEntryCode,
+                            MarketId = array[x].MarketId,
+                            CurrencyCode = array[x].CurrencyCode,
+                            ValidFrom = array[x].ValidFrom, //Gets the right value from this x product in array
+                            ValidUntil = array[x].ValidUntil,
+                            UnitPrice = array[x].UnitPrice
+                        };
 
-                    List<Product> arrayList = new List<Product>();
-                    arrayList = array.ToList(); // Convert array to List to add product
+                        List<Product> arrayList = new List<Product>();
+                        arrayList = array.ToList(); // Convert array to List to add product
 
-                    arrayList.Add(newProduct_Row);
-                    array = arrayList.ToArray(); // Convert back
+                        arrayList.Add(newProduct_Row);
+                        array = arrayList.ToArray(); // Convert back
 
-                    array.Last().UnitPrice = array.First().UnitPrice;
-                    array.Last().ValidFrom = array[x].ValidUntil; //Gets the right value from the last product in list
-                    array.Last().ValidUntil = array[x + 1].ValidFrom; //Gets the right value from next x product in list
+                        array.Last().UnitPrice = array.First().UnitPrice;
+                        array.Last().ValidFrom = array[x].ValidUntil; //Gets the right value from the last product in list
+                        array.Last().ValidUntil = array[x + 1].ValidFrom; //Gets the right value from next x product in list
 
-                    break;
+                        break;
+                    }
                 }
-            }
-            //Added new Product row(s)-----------------------------------------------------------------------------------
+                //Added new Product row(s)-----------------------------------------------------------------------------------
 
-            //Sort the Current List by DateTime ValidFrom
-            List<Product> finishedList = new List<Product>();
-            finishedList = array.ToList();
+                //Sort the Current List by DateTime ValidFrom
+                List<Product> finishedList = new List<Product>();
+                finishedList = array.ToList();
 
-            finishedList.Sort(delegate (Product a, Product b)
-            {
-                if (a.ValidFrom == null && b.ValidFrom == null) return 0;
-                else if (a.ValidFrom == null) return -1;
-                else if (b.ValidFrom == null) return 1;
-                else
+                finishedList.Sort(delegate (Product a, Product b)
                 {
-                    return DateTime.Compare((DateTime) a.ValidFrom, (DateTime) b.ValidFrom);
-                }
-            });
-            //Sort finished----------------------------------------------------------------------------------------------
+                    if (a.ValidFrom == null && b.ValidFrom == null) return 0;
+                    else if (a.ValidFrom == null) return -1;
+                    else if (b.ValidFrom == null) return 1;
+                    else
+                    {
+                        return DateTime.Compare((DateTime) a.ValidFrom, (DateTime) b.ValidFrom);
+                    }
+                });
+                //Sort finished----------------------------------------------------------------------------------------------
             
-            array = finishedList.ToArray();
+                array = finishedList.ToArray();
 
-            //Add Last Product Row----------------------------------------------------------------------------------------
-            for (int y = 0; y<array.Length; y++) 
-            {
-
-                if (array[y] == array.Last())
+                //Add Last Product Row----------------------------------------------------------------------------------------
+                for (int y = 0; y<array.Length; y++) 
                 {
-                    Product newProduct_Row = new Product()
+
+                    if (array[y] == array.Last())
                     {
-                        PriceValuedId = 0, //Need to change value to my ghoost
-                        Created = array[y].Created,
-                        Modified = array[y].Modified,
-                        CatalogEntryCode = array[y].CatalogEntryCode,
-                        MarketId = array[y].MarketId,
-                        CurrencyCode = array[y].CurrencyCode,
-                        ValidFrom = array[y].ValidFrom, //Gets the right value from this x product in array
-                        ValidUntil = array[y].ValidUntil,
-                        UnitPrice = array[y].UnitPrice
-                    };
+                        Product newProduct_Row = new Product()
+                        {
+                            PriceValuedId = 0, //Need to change value to my ghoost
+                            Created = array[y].Created,
+                            Modified = array[y].Modified,
+                            CatalogEntryCode = array[y].CatalogEntryCode,
+                            MarketId = array[y].MarketId,
+                            CurrencyCode = array[y].CurrencyCode,
+                            ValidFrom = array[y].ValidFrom, //Gets the right value from this x product in array
+                            ValidUntil = array[y].ValidUntil,
+                            UnitPrice = array[y].UnitPrice
+                        };
 
-                    List<Product> arrayList = new List<Product>();
-                    arrayList = array.ToList(); // Convert array to List to add product
+                        List<Product> arrayList = new List<Product>();
+                        arrayList = array.ToList(); // Convert array to List to add product
 
-                    arrayList.Add(newProduct_Row);
-                    array = arrayList.ToArray(); // Convert back
+                        arrayList.Add(newProduct_Row);
+                        array = arrayList.ToArray(); // Convert back
 
-                    array.Last().UnitPrice = array.First().UnitPrice;
-                    array.Last().ValidFrom = array[y].ValidUntil; //Gets the right value from the last product in list
-                    array.Last().ValidUntil = null; //Gets the right value from next x product in list
+                        array.Last().UnitPrice = array.First().UnitPrice;
+                        array.Last().ValidFrom = array[y].ValidUntil; //Gets the right value from the last product in list
+                        array.Last().ValidUntil = null; //Gets the right value from next x product in list
 
-                    break;
+                        break;
+                    }
                 }
+                //Added Last Product Row-----------------------------------------------------------------------------------------
             }
-            //Added Last Product Row-----------------------------------------------------------------------------------------
+            else
+            {
+                array.Last().ValidUntil = null; 
+            }
 
-            List<Product> finishedList_After_LastProductRow = new List<Product>();
+             List<Product> finishedList_After_LastProductRow = new List<Product>();
             finishedList_After_LastProductRow = array.ToList();
             return finishedList_After_LastProductRow;
         }

@@ -30,6 +30,7 @@ namespace PriceDetailAssignment.Controllers
 
             ViewBag.Message_CatalogEntryCode = catalogEntryCode;
             ViewBag.Message_Market = market_Id;
+            ViewBag.Message_Currency = currency_Code;
 
             List<Product> catalogEntryCodes = new List<Product>();
             catalogEntryCodes = _productService.All_Raw_Data().Where(x => x.CatalogEntryCode == catalogEntryCode).ToList();

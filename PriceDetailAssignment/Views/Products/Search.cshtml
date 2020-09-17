@@ -1,0 +1,67 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search Product</h1>
+
+<form asp-controller="Products" asp-action="Search" method="post" class="btn btn-success">
+
+<div asp-validation-summary="All"></div>
+
+<br />
+
+<label asp-for="CatalogEntryCode"></label>
+<input asp-for="CatalogEntryCode" />
+<span asp-validation-for="CatalogEntryCode"></span>
+<br />
+
+<label asp-for="MarketId"></label>
+<input asp-for="MarketId" />
+<span asp-validation-for="MarketId"></span>
+<br />
+
+<label asp-for="CurrencyCode"></label>
+<input asp-for="CurrencyCode" />
+<span asp-validation-for="CurrencyCode"></span>
+<br />
+
+<br />
+<input type="submit" value="Search Product" />
+<br />
+<br />
+<input type="submit" value="Back To StartPage" asp-action="Index" />
+<br />
+</form>
+
+
+@*<form asp-controller="Products" asp-action="Search" method="post" class="btn btn-success">
+
+        <select class="form-control" asp-for="MarketId">
+            @foreach (var item in Model)
+            {
+                <option value="@item.Id">@item.MarketId</option>
+            }
+        </select>
+
+        <select class="form-control">
+            @foreach (var item in Model)
+            {
+                <option value="@item.Id">@item.CurrencyCode</option>
+            }
+        </select>
+
+        <select class="form-control">
+            @foreach (var item in Model)
+            {
+                <option value="@item.Id"><input />@item.CatalogEntryCode</option>
+            }
+        </select>
+
+        <input type="submit" value="Search Product" asp-action="Search" />
+        <br />
+
+        <input type="submit" value="Back To StartPage" asp-action="Index" />
+
+    </form>*@
+

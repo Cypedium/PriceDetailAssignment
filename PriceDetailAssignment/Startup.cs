@@ -61,7 +61,7 @@ namespace PriceDetailAssignment
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{market_Id=en}/{currency_Code=SEK}/{catalogEntryCode=27773-02}");
+                    pattern: "{controller=Home}/{action=Index}/{market_Id?}/{currency_Code?}/{catalogEntryCode?}");
             });
         }
     }

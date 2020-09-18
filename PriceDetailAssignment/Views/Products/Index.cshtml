@@ -2,14 +2,14 @@
 @{
     ViewData["Title"] = "Index";
 }
-<h2>Search Product</h2>
+<h2>Search for Products PriceList</h2>
 <form asp-controller="Products" asp-action="Search" method="get" class="btn btn-success">
     <input type="submit" value="Search Product" asp-action="Search" />
 </form>
 <br />
 <hr />
 
-<h2>List for CatalogEntryCode: @ViewBag.Message_CatalogEntryCode</h2>
+<h2>Pricelist for CatalogEntryCode: @ViewBag.Message_CatalogEntryCode</h2>
 <br />
 <p>Filtred with Market: @ViewBag.Message_Market </p>
 <p> and Currency: @ViewBag.Message_Currency</p>

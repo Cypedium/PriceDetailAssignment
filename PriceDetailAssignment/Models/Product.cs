@@ -17,8 +17,8 @@ namespace PriceDetailAssignment.Models
         public DateTime? Created { get; set; }
         
         public DateTime? Modified { get; set; }
-
-        //[RegularExpression(@"^[0-9]+[0-9]*-")]
+        
+        [RegularExpression(@"\d{5}-\d{2}")]
         [Column(TypeName = "nvarchar(20)")]
         public string CatalogEntryCode {get; set;}
         

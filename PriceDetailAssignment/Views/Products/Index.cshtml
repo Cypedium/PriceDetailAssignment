@@ -2,63 +2,62 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>List for CatalogEntryCode: @ViewBag.Message_CatalogEntryCode</h1>
-<br />
-<p>Filtred with Market: @ViewBag.Message_Market and Currency: @ViewBag.Message_Currency </p>
-<br />
-
+<h2>Search Product</h2>
 <form asp-controller="Products" asp-action="Search" method="get" class="btn btn-success">
     <input type="submit" value="Search Product" asp-action="Search" />
 </form>
+<br />
+<hr />
 
-    <br />
-    <br />
+<h2>List for CatalogEntryCode: @ViewBag.Message_CatalogEntryCode</h2>
+<br />
+<p>Filtred with Market: @ViewBag.Message_Market </p>
+<p> and Currency: @ViewBag.Message_Currency</p>
+<br />
+<br />
 
-    <table class="table table-striped align-left">
-        <thead class="thead-light align-left">
-            <tr m-10>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>MarketId</th>
-                <th></th>
-                <th>UnitPrice</th>
-                <th></th>
-                <th>CurrencyCode</th>
-                <th></th>
-                <th m-20>ValidFrom</th>
-                <th></th>
-                <th></th>
-                <th m-20>ValidUntil</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
+<table class="table table-striped align-left">
+    <thead class="thead-light align-left">
+        <tr m-10>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>MarketId</th>
+            <th></th>
+            <th>UnitPrice</th>
+            <th></th>
+            <th>CurrencyCode</th>
+            <th></th>
+            <th m-20>ValidFrom</th>
+            <th></th>
+            <th></th>
+            <th m-20>ValidUntil</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
 
-        <tbody>
-            @if (Model != null)
-                @foreach (var item in Model)
-                {
-                    <tr m-10 id="TableRow @item.Id:" class="align-left">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>@item.MarketId</td>
-                        <td></td>
-                        <td>@item.UnitPrice</td>
-                        <td></td>
-                        <td>@item.CurrencyCode</td>
-                        <td></td>
-                        <td m-20>@item.ValidFrom --</td>
-                        <td></td>
-                        <td></td>
-                        <td m-20>@item.ValidUntil</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                }
-        </tbody>
-    </table>
-
-
+    <tbody>
+        @if (Model != null)
+            @foreach (var item in Model)
+            {
+                <tr m-10 id="TableRow @item.Id:" class="align-left">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@item.MarketId</td>
+                    <td></td>
+                    <td>@item.UnitPrice</td>
+                    <td></td>
+                    <td>@item.CurrencyCode</td>
+                    <td></td>
+                    <td m-20>@item.ValidFrom --</td>
+                    <td></td>
+                    <td></td>
+                    <td m-20>@item.ValidUntil</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+    </tbody>
+</table>

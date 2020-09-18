@@ -140,7 +140,7 @@ namespace PriceDetailAssignment.Models.Services
                 array.Last().ValidUntil = null; 
             }
 
-             List<Product> finishedList_After_LastProductRow = new List<Product>();
+            List<Product> finishedList_After_LastProductRow = new List<Product>();
             finishedList_After_LastProductRow = array.ToList();
             return finishedList_After_LastProductRow;
         }
